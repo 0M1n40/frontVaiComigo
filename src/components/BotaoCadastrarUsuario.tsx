@@ -1,4 +1,4 @@
-function BotaoCadastrar() {
+function BotaoCadastrarUsuario() {
 
     function register(){
         console.log('implementar dps')
@@ -14,4 +14,4 @@ function BotaoCadastrar() {
     )
 }
 
-export default BotaoCadastrar
+export default BotaoCadastrarUsuario
