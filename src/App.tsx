@@ -3,6 +3,7 @@ import { AuthProvider } from "./contexts/AuthContext";
 import Login from "./pages/login/Login";
 import Cadastro from "./pages/cadastro/Cadastro";
 import Navbar from './components/navbar/Navbar';
+import ListaVeiculo from "./components/veiculos/listaveiculo/ListaVeiculo";
 
 function App() {
     return (
@@ -16,6 +17,7 @@ function App() {
                 
                 <Route path="/cadastro" element={<Cadastro />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/temas" element={<ListaVeiculo />} />
                 </Routes>
             </div>
             

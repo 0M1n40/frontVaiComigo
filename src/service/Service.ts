@@ -1,8 +1,9 @@
 import axios from 'axios'
 
-export const api = axios.create({
-    baseURL: import.meta.env.VITE_API_URL
+const api = axios.create({
+    baseURL:'https://appcarona.onrender.com/'
 })
+
 
 export const cadastrarUsuario = async (url: string, dados: Object, setDados: Function) => {
     const resposta = await api.post(url, dados)
