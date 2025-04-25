@@ -5,6 +5,8 @@ import { ToastAlerta } from '../../../utils/ToastAlerta';
 import { atualizar, buscar, cadastrar } from '../../../service/Service';
 import { AuthContext } from '../../../contexts/AuthContext';
 import { RotatingLines } from 'react-loader-spinner';
+import BotaoCadastrar from '../../buttons/BotaoCadastrarVeiculoViagem';
+import BotaoCadastrarVeiculoViagem from '../../buttons/BotaoCadastrarVeiculoViagem';
 
 function FormVeiculo() {
     const navigate = useNavigate();
@@ -96,7 +98,7 @@ function FormVeiculo() {
         <div className="flex justify-center items-center min-h-screen bg-gray-100">
             <div className="bg-gray-50 border rounded-lg shadow-md p-8 w-full max-w-lg">
                 <h1 className="text-2xl font-semibold mb-8 text-center">
-                    {id === undefined ? 'Cadastrar Veículo' : 'Editar Veículo'}
+                    {id === undefined ? 'Cadastrar novo veículo' : 'Editar veículo'}
                 </h1>
 
                 <form className="flex flex-col gap-6" onSubmit={gerarNovoVeiculo}>
@@ -136,22 +138,9 @@ function FormVeiculo() {
                         />
                     </div>
 
-                    <button
-                        className="bg-teal-400 hover:bg-teal-600 text-white font-semibold rounded-full py-2 mt-4 flex justify-center items-center transition-all duration-300"
-                        type="submit"
-                    >
-                        {isLoading ? (
-                            <RotatingLines
-                                strokeColor="white"
-                                strokeWidth="5"
-                                animationDuration="0.75"
-                                width="24"
-                                visible={true}
-                            />
-                        ) : (
-                            <span>{id === undefined ? 'Cadastrar' : 'Atualizar'}</span>
-                        )}
-                    </button>
+                    <BotaoCadastrarVeiculoViagem/>
+
+                    
                 </form>
             </div>
         </div>
