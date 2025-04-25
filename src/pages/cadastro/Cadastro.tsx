@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { Usuario } from "../../models/Usuario"
 import { cadastrarUsuario } from "../../service/Service"
 import "./Cadastro.css";
+import BotaoPrincipal from "../../components/buttons/BotaoCadastrarEntrar";
 
 function Cadastro() {
     const navigate = useNavigate()
@@ -117,6 +118,11 @@ async function cadastrarNovoUsuario(e: FormEvent<HTMLFormElement>){
             value={usuario.senha}
             onChange={atualizarEstado}
             />
+        </div>
+        <div className="flex justify-center mt-4 w-full">
+        <BotaoPrincipal
+            label={isLoading ? "Carregando..." : "Cadastrar"}
+        />
         </div>
         </form>
     </div>
