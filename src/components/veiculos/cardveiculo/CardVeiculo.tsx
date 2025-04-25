@@ -1,3 +1,4 @@
+
 import { Link } from 'react-router-dom'
 import { Veiculo } from '../../../models/Veiculo'
 
@@ -32,3 +33,4 @@ function CardVeiculo({ veiculo }: CardVeiculoProps) {
 }
 
 export default CardVeiculo
+

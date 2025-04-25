@@ -5,7 +5,7 @@ function Footer() {
 
     return (
         <>
-            <div className="bg-[#0D334D] text-white py-6">
+            <div className="bg-[#0D334D] text-white py-12">
                 <div className="container mx-auto flex justify-between items-center px-4">
                     <div className="text-sm">
                         <p>© {data} VaiComigo! All rights reserved.</p>
