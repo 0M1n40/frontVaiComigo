@@ -1,52 +1,79 @@
+
+import { useNavigate } from 'react-router-dom';
 import './Login.css';
+import { UsuarioLogin } from '../../models/UsuarioLogin';
+import { ChangeEvent, useContext, useEffect, useState } from 'react';
 
 function Login() {
 
-    return (
-        <>
-            <div className="grid grid-cols-1 lg:grid-cols-2 h-screen place-items-center font-bold ">
-                <form className="flex justify-center items-center flex-col w-1/2 gap-4" >
-                    <h2 className="text-slate-900 text-5xl ">Entrar</h2>
-                    <div className="flex flex-col w-full">
-                        <label htmlFor="usuario">Usuário</label>
-                        <input
-                            type="text"
-                            id="usuario"
-                            name="usuario"
-                            placeholder="Usuario"
-                            className="border-2 border-slate-700 rounded p-2"
+    const navigate = useNavigate();
 
-                        />
-                    </div>
-                    <div className="flex flex-col w-full">
-                        <label htmlFor="senha">Senha</label>
-                        <input
-                            type="password"
-                            id="senha"
-                            name="senha"
-                            placeholder="Senha"
-                            className="border-2 border-slate-700 rounded p-2"
+    const { usuario, handleLogin} = useContext(AuthContext)
 
-                        />
-                    </div>
-                    <button 
-                        type='submit' 
-                        className="rounded bg-indigo-400 flex justify-center
-                    hover:bg-indigo-900 text-white w-1/2 py-2">
-                        <span>Entrar</span>
-                    </button>
+    const [usuarioLogin, setUsuarioLogin] = useState<UsuarioLogin>(
+        {} as UsuarioLogin
+    )
 
-                    <hr className="border-slate-800 w-full" />
+    useEffect(() => {
+        if (usuario.token !== "") {
+            navigate('/home')
+        }
+    }, [usuario])
 
-                    <p>
-                        Ainda não tem uma conta?{' '}
-                        Cadastre-se
-                    </p>
-                </form>
-                <div className="fundoLogin hidden lg:block"></div>
+    function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
+        setUsuarioLogin({
+            ...usuarioLogin,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    function login(e: ChangeEvent<HTMLFormElement>) {
+        e.preventDefault()
+        handleLogin(usuarioLogin)
+    }
+
+return (
+        <form onSubmit={login} className='flex flex-col w-full max-w-md gap-6'>
+            <div className="text-center">
+                <h2 className="text-slate-900 text-2xl font-bold">Login</h2>    
             </div>
-        </>
-    );
+
+            <div className="flex flex-col">
+                <label htmlFor='usuario' className='text-gray-600 mb-1'>Email</label>
+                <input 
+                    type="email"
+                    id='usuario'  
+                    placeholder="email@exemplo.com" 
+                    className="border border-gray-300 focus:outline-none py-2"
+                    onChange={atualizarEstado}
+                    value={usuarioLogin.usuario}
+                    required
+                />
+            </div>
+
+            <div className="flex flex-col">
+                <label htmlFor="senha" className="text-gray-600 mb-1">Senha</label>
+                <input 
+                    type="password"
+                    id="senha"
+                    placeholder="Senha" 
+                    className="border border-gray-300 focus:outline-none py-2"
+                    onChange={atualizarEstado}
+                    value={usuarioLogin.senha}
+                    required
+                />
+            </div>
+
+            {/* <button
+                type="submit"
+                disabled={isLoading}
+                className={`bg-[#4ecdc4] hover:bg-[#38b9b3] text-white py-2 rounded w-full transition duration-200 ${isLoading ? "opacity-50 cursor-not-allowed" : ""}`}
+            >
+            {isLoading ? "Entrando..." : "Entrar"}    
+            </button> */}
+        
+        </form>
+    )
 }
 
-export default Login;
+export default Login
