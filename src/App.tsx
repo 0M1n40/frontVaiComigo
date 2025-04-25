@@ -3,6 +3,7 @@ import { AuthProvider } from "./contexts/AuthContext";
 import Login from "./pages/login/Login";
 import Cadastro from "./pages/cadastro/Cadastro";
 import Navbar from './components/navbar/Navbar';
+import DeletarVeiculo from "./components/veiculos/deletarveiculo/DeletarVeiculo";
 
 function App() {
     return (
@@ -15,6 +16,7 @@ function App() {
                 <Route path="/" element={<Login />} />
                 <Route path="/cadastro" element={<Cadastro />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/deletarveiculo/:id" element={<DeletarVeiculo />} />
                 </Routes>
             </div>
             
