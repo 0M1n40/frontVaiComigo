@@ -1,20 +1,36 @@
-import carro from './../../../assets/carro-com-fundo-teste.png'
 
-export default function CardVeiculo() {
-    return (
-    <div className="w-[301px] max-w-full h-[264px] rounded-[30px] overflow-hidden">
-      <div className="h-[215px]">
-        <img
-          src={carro}
-          alt="foto de um carro"
-          className="w-full h-full object-cointain"
-        />
-      </div>
+import { Link } from 'react-router-dom'
+import { Veiculo } from '../../../models/Veiculo'
 
-      <div className="bg-[#4EBCB9] h-[49px] flex items-center justify-between px-4 text-[#EFEFEF] font-bold text-sm">
-        <span>Carro: modelo xyz</span>
-        <span>Placa: abcd</span>
-      </div>
-    </div>
-  );
+
+interface CardVeiculoProps{
+    veiculo: Veiculo
 }
+
+function CardVeiculo({ veiculo }: CardVeiculoProps) {
+    return (
+        <div className='border flex flex-col rounded-2xl overflow-hidden justify-between'>
+            <header className='py-2 px-6 bg-indigo-800 text-white font-bold text-2xl'>
+                Veículo
+            </header>
+            <p className='p-8 text-3xl bg-slate-200 h-full'>{veiculo.modelo}</p>
+            
+            <div className="flex">
+                <Link to=''
+                    className='w-full text-slate-100 bg-indigo-400 hover:bg-indigo-800 
+                        flex items-center justify-center py-2'>
+                    <button>Editar</button>
+                </Link>
+
+                <Link to='' className='text-slate-100 bg-red-400 hover:bg-red-700 w-full 
+                    flex items-center justify-center'>
+                    <button>Deletar</button>
+                </Link>
+            </div>
+
+        </div>
+    )
+}
+
+export default CardVeiculo
+

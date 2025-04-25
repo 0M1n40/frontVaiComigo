@@ -13,7 +13,9 @@ function Navbar() {
 
                     <div className='flex gap-20 space-x-6 font-popping-light text-[#a2aeb6]'>
                         <Link to='' className=''>Viagens</Link>
-                        <Link to='' className=''>Veículos</Link>
+
+                        <Link to='/veiculo' className='hover:underline'>Veículos</Link>
+
                         <Link to='' className=''>Cadastrar</Link>
                         
                             <Link to='' className=''>Sair</Link>
