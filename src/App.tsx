@@ -1,16 +1,28 @@
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { AuthProvider } from "./contexts/AuthContext";
+import Login from "./pages/login/Login";
+import Cadastro from "./pages/cadastro/Cadastro";
 import Navbar from './components/navbar/Navbar';
 
 function App() {
-  
-  return (
-    <>
-    <BrowserRouter>
-       <Navbar />
-       </BrowserRouter>
-    </>
-    
-  )
-}
+    return (
+        <>
+        <AuthProvider>
+        <BrowserRouter>
+            <Navbar />
+            <div className="min-h-[80vh]">
+                <Routes>
+                <Route path="/" element={<Login />} />
+                
+                <Route path="/cadastro" element={<Cadastro />} />
+                <Route path="/login" element={<Login />} />
+                </Routes>
+            </div>
+            
+            </BrowserRouter>
+        </AuthProvider>
 
-export default App;
+        </>
+    )
+}
+    export default App
