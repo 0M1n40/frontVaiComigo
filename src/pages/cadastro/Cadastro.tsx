@@ -121,7 +121,7 @@ async function cadastrarNovoUsuario(e: FormEvent<HTMLFormElement>){
         </div>
         <div className="flex justify-center mt-4 w-full">
         <BotaoPrincipal
-            label={isLoading ? "Carregando..." : "Cadastrar"}
+            label={"Cadastrar"}
         />
         </div>
         </form>
