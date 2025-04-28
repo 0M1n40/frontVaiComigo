@@ -19,7 +19,7 @@ function Home() {
           <BannerAnimacao />
         </div>
 
-        <div className="flex flex-col items-center w-full md:w-1/2 space-y-8 mb-12 pt-12 mr-10">
+        <div className="flex flex-col items-center w-full md:w-1/2 space-y-8 mb-12 pt-12 p-6">
           <div className="flex flex-col items-center">
             <h2 className="text-4xl font-medium text-white">Economize, Compartilhe,</h2>
             <h2 className="text-4xl font-medium text-white">Chegue junto</h2>
@@ -38,7 +38,7 @@ function Home() {
       </section>
 
       {/* Sobre nós */}
-      <section id="sobre" className="p-20 px-6 max-w-5xl mx-auto rounded-lg shadow-lg text-center mt-12">
+      <section id="sobre" className=" max-w-5xl mx-auto rounded-lg shadow-lg text-center mt-12">
         <h3 className="text-4xl font-semibold mb-20">Sobre Nós</h3>
         <h4 className="text-2xl font-semibold mb-3">Um convite que virou movimento</h4>
         <p className="text-gray-700 leading-relaxed">
