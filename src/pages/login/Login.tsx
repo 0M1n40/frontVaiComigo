@@ -5,6 +5,7 @@ import { ChangeEvent, useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
 import BotaoPrincipal from '../../components/buttons/BotaoCadastrarEntrar';
 import vaiComigoLogo  from '../../utils/img/VaiComigo.png'
+import BotaoCadastrarUsuario from '../../components/buttons/BotaoCadastrarUsuario';
 
 function Login() {
 
@@ -45,51 +46,54 @@ function Login() {
                     </h1>
                 </div>
 
-            <div className="flex justify-center">
-                <img 
-                    src={vaiComigoLogo}
-                    alt="Logo do projeto VaiComigo" 
-                    className="object-contain"
-                />
-            </div>
-        </div>      
-              
-            <div className="flex justify-center items-center flex-col w-full lg:col-span-3 gap-3 rounded-lg">
+                <div className="flex justify-center">
+                    <img 
+                        src={vaiComigoLogo}
+                        alt="Logo do projeto VaiComigo" 
+                        className="object-contain"
+                    />
+                </div>
+            </div>      
+
+            <div className="flex justify-center items-center flex-col w-full lg:col-span-3 gap-3 rounded-lg relative">
+
+                <div className="absolute top-4 w-2/3 flex justify-end">
+                    <BotaoCadastrarUsuario />
+                </div>
+
                 <form
-                    className="flex justify-center items-center flex-col w-2/3 gap-3"
+                    className="flex justify-center items-center flex-col w-2/3 gap-3 mt-24"
                     onSubmit={login}
                 >
-                <h6 className="poppins text-slate-900 text-2xl">Login</h6>
+                    <h6 className="poppins text-slate-900 text-2xl">Login</h6>
 
-                <div className="poppins flex flex-col w-full mb-6">
-                    <label htmlFor="email" className="sr-only">Usuário (e-mail)</label>
-                    <input
-                        type="text"
-                        id="email"
-                        name="usuario"
-                        placeholder="Usuário (e-mail)"
-                        className="border-b border-gray-300 bg-transparent p-2 text-gray-700 placeholder-gray-400 focus:outline-none focus:border-gray-500"
-                        value={usuarioLogin.usuario}
-                        onChange={atualizarEstado}
-                    />
-                </div>
+                    <div className="poppins flex flex-col w-full mb-6">
+                        <label htmlFor="email" className="sr-only">Usuário (e-mail)</label>
+                        <input
+                            type="text"
+                            id="email"
+                            name="usuario"
+                            placeholder="Usuário (e-mail)"
+                            className="border-b border-gray-300 bg-transparent p-2 text-gray-700 placeholder-gray-400 focus:outline-none focus:border-gray-500"
+                            value={usuarioLogin.usuario}
+                            onChange={atualizarEstado}
+                        />
+                    </div>
 
-                <div className="poppins flex flex-col w-full mb-6">
-                    <label htmlFor="senha" className="sr-only">Senha</label>
-                    <input
-                        type="password"
-                        id="senha"
-                        name="senha"
-                        placeholder="Senha"
-                        className="border-b border-gray-300 bg-transparent p-2 text-gray-700 placeholder-gray-400 focus:outline-none focus:border-gray-500"
-                        value={usuarioLogin.senha}
-                        onChange={atualizarEstado}
-                    />
-                </div>
+                    <div className="poppins flex flex-col w-full mb-6">
+                        <label htmlFor="senha" className="sr-only">Senha</label>
+                        <input
+                            type="password"
+                            id="senha"
+                            name="senha"
+                            placeholder="Senha"
+                            className="border-b border-gray-300 bg-transparent p-2 text-gray-700 placeholder-gray-400 focus:outline-none focus:border-gray-500"
+                            value={usuarioLogin.senha}
+                            onChange={atualizarEstado}
+                        />
+                    </div>
 
-                <BotaoPrincipal
-                    label={"Entrar"}
-                />
+                    <BotaoPrincipal label={"Entrar"} />
                 </form>
             </div>
         </div>
