@@ -5,18 +5,23 @@ import Cadastro from "./pages/cadastro/Cadastro";
 import Navbar from './components/navbar/Navbar';
 import ListaVeiculo from "./components/veiculos/listaveiculo/ListaVeiculo";
 
+import Home from "./pages/home/Home";
+
 function App() {
     return (
         <>
         <AuthProvider>
+            
         <BrowserRouter>
+    
             <Navbar />
             <div className="min-h-[80vh]">
                 <Routes>
                 <Route path="/" element={<Login />} />
+                <Route path="/home" element={<Home />} />
                 <Route path="/cadastro" element={<Cadastro />} />
                 <Route path="/login" element={<Login />} />
-                <Route path="/temas" element={<ListaVeiculo />} />
+                <Route path="/veiculos" element={<ListaVeiculo />} />
                 </Routes>
             </div>
             
