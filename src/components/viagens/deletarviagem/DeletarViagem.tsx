@@ -1,15 +1,14 @@
 import { useContext, useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
-import { Veiculo } from "../../../models/Veiculo"
+import { Viagem } from "../../../models/Viagem"
 import { AuthContext } from "../../../contexts/AuthContext"
 import { buscar, deletar } from "../../../service/Service"
 
-
-function DeletarVeiculo() {
+function DeletarViagem() {
 
     const navigate = useNavigate()
 
-    const [veiculo, setVeiculo] = useState<Veiculo>({} as Veiculo)
+    const [viagem, setViagem] = useState<Viagem>({} as Viagem)
     const [isLoading, setIsLoading] = useState<boolean>(false) //ainda não sei se esse isLoading vai ser util aqui.
     
     const { usuario, handleLogout } = useContext(AuthContext)
@@ -19,7 +18,7 @@ function DeletarVeiculo() {
 
     async function buscarPorId(id: string) {
         try {
-            await buscar(`/veiculos/${id}`, setVeiculo, {
+            await buscar(`/viagens/${id}`, setViagem, {
                 headers: {
                     'Authorization': token
                 }
@@ -44,23 +43,23 @@ function DeletarVeiculo() {
         }
     }, [id])
 
-    async function deletarVeiculo() {
+    async function deletarViagem() {
         setIsLoading(true)
 
         try {
-            await deletar(`/veiculos/${id}`, {
+            await deletar(`/viagens/${id}`, {
                 headers: {
                     'Authorization': token
                 }
             })
 
-            alert('Veículo apagado com sucesso')
+            alert('Viagem apagada com sucesso')
 
         } catch (error: any) {
             if (error.toString().includes('403')) {
                 handleLogout()
             }else {
-                alert('Erro ao deletar o veículo.')
+                alert('Erro ao deletar a viagem.')
             }
         }
 
@@ -69,23 +68,24 @@ function DeletarVeiculo() {
     }
 
     function retornar() {
-        navigate("/veiculos")
+        navigate("/viagens")
     }
     
     return (
         <div className='container w-1/3 mx-auto'>
-            <h1 className='text-4xl text-center my-4'>Deletar veículo</h1>
+            <h1 className='text-4xl text-center my-4'>Deletar viagem</h1>
             <p className='text-center font-semibold mb-4'>
-                Você tem certeza de que deseja apagar o veículo a seguir?</p>
+                Você tem certeza de que deseja apagar o viagem a seguir?</p>
             <div className='border flex flex-col rounded-2xl overflow-hidden justify-between'>
                 <header 
                     className='py-3 px-6 text-center text-gray-800 font-bold text-2xl'>
-                    Veículo
+                    Viagem
                 </header>
                 <div className="p-6 text-xl font-medium text-gray-800 mb-2">
-                <p>Modelo: {veiculo.modelo}</p>
-                <p>Placa: {veiculo.placa}</p>
-                <p>Tipo: {veiculo.tipoVeiculo}</p>
+                <p>Origem: {viagem.origem}</p>
+                <p>Destino: {viagem.destino}</p>
+                <p>Vagas: {viagem.vagas}</p>
+                <p>Distancia: {viagem.distancia}</p>
                 </div>
                 <div className="flex p-4 gap-4 bg-gray-50 border-t">
                         <button 
@@ -95,7 +95,7 @@ function DeletarVeiculo() {
                         </button>
                         <button 
                             className='w-full text-slate-100 bg-[#4EBCB9] hover:bg-[#3EA7A5]  flex items-center justify-center rounded-lg font-medium transition-colors duration-200'
-                            onClick={deletarVeiculo}>
+                            onClick={deletarViagem}>
                             <span>Confirmar</span>
                         </button>
                     </div>
@@ -103,4 +103,4 @@ function DeletarVeiculo() {
         </div>
     )
 }
-export default DeletarVeiculo
+export default DeletarViagem
