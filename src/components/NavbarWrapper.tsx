@@ -7,7 +7,6 @@ function NavbarWrapper({ children }: { children: React.ReactNode }) {
   const [showNavbar, setShowNavbar] = useState(false);
 
   useEffect(() => {
-    console.log('Location: ', location);
 
     if (location.pathname === '/login' || location.pathname === '/cadastro') {
       setShowNavbar(false);
