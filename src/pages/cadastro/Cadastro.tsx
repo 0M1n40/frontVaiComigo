@@ -33,9 +33,6 @@ function atualizarEstado(e: ChangeEvent<HTMLInputElement>){
         [e.target.name]: e.target.value
     })
 }
-
-
-
 async function cadastrarNovoUsuario(e: FormEvent<HTMLFormElement>){ 
     e.preventDefault()
     
