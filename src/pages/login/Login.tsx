@@ -4,6 +4,7 @@ import './Login.css';
 import { UsuarioLogin } from '../../models/UsuarioLogin';
 import { ChangeEvent, useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
+import BotaoLogin from '../../components/buttons/BotaoLogin';
 
 function Login() {
 
@@ -44,6 +45,7 @@ return (
                 <input 
                     type="email"
                     id='usuario'  
+                    name='usuario'
                     placeholder="email@exemplo.com" 
                     className="border border-gray-300 focus:outline-none py-2"
                     onChange={atualizarEstado}
@@ -57,6 +59,7 @@ return (
                 <input 
                     type="password"
                     id="senha"
+                    name='senha'
                     placeholder="Senha" 
                     className="border border-gray-300 focus:outline-none py-2"
                     onChange={atualizarEstado}
@@ -72,7 +75,7 @@ return (
             >
             {isLoading ? "Entrando..." : "Entrar"}    
             </button> */}
-        
+        <BotaoLogin />
         </form>
     )
 }

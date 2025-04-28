@@ -17,7 +17,7 @@ function Navbar() {
 
         {/* Direita - Links de navegação */}
         <div className="flex gap-8 font-popping-light text-[#a2aeb6] ml-89 ">
-          <Link to=""  className="hover:underline">Viagens</Link>
+          <Link to="/viagens"  className="hover:underline">Viagens</Link>
           <Link to="/veiculo" className="hover:underline">Veículos</Link>
           <Link to=""  className="hover:underline">Cadastrar</Link>
           <Link to=""  className="hover:underline border-1 w-15 text-center rounded-md ">Sair</Link>
