@@ -1,7 +1,7 @@
 import { Veiculo } from "./Veiculo";
 
 export interface Viagem {
-  id: number;
+  id: number|null;
   origem: string;
   destino: string;
   vagas: number;

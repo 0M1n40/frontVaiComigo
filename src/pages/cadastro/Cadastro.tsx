@@ -10,12 +10,14 @@ import BotaoLogin from "../../components/buttons/BotaoLogin";
 function Cadastro() {
     const navigate = useNavigate()
     const [confirmaSenha, setConfirmaSenha] = useState<string>("")
+    const [isLoading, setIsLoading] = useState<boolean>(false) //deixar isLoading ai por enquanto
+
     const [usuario, setUsuario] = useState<Usuario>({
-    id: 0,
-    nome: '',
-    usuario: '',
-    senha: '',
-    foto: ''
+        id: null,
+        nome: '',
+        usuario: '',
+        senha: '',
+        foto: ''
     })
     
     useEffect(() => {
@@ -35,16 +37,16 @@ function atualizarEstado(e: ChangeEvent<HTMLInputElement>){
     })
 }
 
-function handleConfirmarSenha(e: ChangeEvent<HTMLInputElement>){ //dar uma olhada nisso
-    setConfirmaSenha(e.target.value)
-}
+
 
 async function cadastrarNovoUsuario(e: FormEvent<HTMLFormElement>){ 
     e.preventDefault()
     
-    if(confirmaSenha === usuario.senha && usuario.senha.length >= 8){
+
+    if(usuario.senha.length >= 8){
+        setIsLoading(true)
         try {
-        await cadastrarUsuario(`/usuarios/cadastro`, usuario, setUsuario) //estava: /usuarios/cadastrar tem que dar uma olhada
+        await cadastrarUsuario(`/usuarios/cadastrar`, usuario, setUsuario) //estava: /usuarios/cadastrar tem que dar uma olhada
         alert("Usuário cadastrado com sucesso!")
     } catch (error) {
         alert("Erro ao cadastrar o usuário!")
@@ -52,7 +54,7 @@ async function cadastrarNovoUsuario(e: FormEvent<HTMLFormElement>){
     } else {
         alert("Dados do usuário inconsistentes! Verifique as informações do cadastro.")
         setUsuario({...usuario, senha: ''})
-        setConfirmaSenha('')
+        
     }
 }
 
