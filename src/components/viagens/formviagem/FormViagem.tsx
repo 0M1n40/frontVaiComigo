@@ -102,7 +102,7 @@ function FormViagem() {
   return (
     <div className="bg-gray-100">
       <div className="container mx-auto px-4 py-8">
-        <div className="max-w-2xl mx-auto bg-white rounded-lg border border-gray-200 p-8">
+      <div className="max-w-2xl mx-auto bg-white border-2 border-black rounded-lg p-8">
           <h1 className="text-2xl text-center my-4">
             {id === undefined ? "Cadastrar Viagem" : "Editar Viagem"}
           </h1>

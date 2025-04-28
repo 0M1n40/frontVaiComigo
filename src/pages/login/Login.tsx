@@ -1,80 +1,106 @@
-
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
 import { UsuarioLogin } from '../../models/UsuarioLogin';
-import { ChangeEvent, useContext, useEffect, useState } from 'react';
+import { ChangeEvent, FormEvent, useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
 
-function Login() {
+import BotaoPrincipal from '../../components/buttons/BotaoCadastrarEntrar';
+import vaiComigoLogo from '../../utils/img/VaiComigo.png';
+import BotaoCadastrarUsuario from '../../components/buttons/BotaoCadastrarUsuario';
 
+function Login() {
     const navigate = useNavigate();
 
-    const { usuario, handleLogin} = useContext(AuthContext)
+    const { usuario, handleLogin } = useContext(AuthContext);
 
-    const [usuarioLogin, setUsuarioLogin] = useState<UsuarioLogin>(
-        {} as UsuarioLogin
-    )
+    const [usuarioLogin, setUsuarioLogin] = useState<UsuarioLogin>({} as UsuarioLogin);
 
     useEffect(() => {
         if (usuario.token !== "") {
-            navigate('/home')
+            navigate('/home');
         }
-    }, [usuario])
+    }, [usuario, navigate]);
 
     function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
         setUsuarioLogin({
             ...usuarioLogin,
             [e.target.name]: e.target.value
-        })
+        });
     }
 
-    function login(e: ChangeEvent<HTMLFormElement>) {
-        e.preventDefault()
-        handleLogin(usuarioLogin)
+    function login(e: FormEvent<HTMLFormElement>) {
+        e.preventDefault();
+        handleLogin(usuarioLogin);
     }
 
-return (
-        <form onSubmit={login} className='flex flex-col w-full max-w-md gap-6'>
-            <div className="text-center">
-                <h2 className="text-slate-900 text-2xl font-bold">Login</h2>    
+    return (
+        <div className="grid grid-cols-1 lg:grid-cols-5 h-screen">
+            {/* Lado esquerdo com fundo azul e logo */}
+            <div className="relative bg-[#0D334D] h-full hidden lg:flex flex-col justify-between p-10 lg:col-span-2">
+                <div className="mt-20">
+                    <h1 className="font-poppins text-[#EFEFEF] text-4xl lg:text-5xl leading-tight tracking-wide">
+                        Conectando <br /> <span className="font-bold">caminhos</span>, <br />
+                        compartilhando <span className="font-bold">destinos</span>.
+                    </h1>
+                </div>
+
+                <div className="flex justify-center">
+                    <img
+                        src={vaiComigoLogo}
+                        alt="Logo do projeto VaiComigo"
+                        className="object-contain"
+                    />
+                </div>
             </div>
 
-            <div className="flex flex-col">
-                <label htmlFor='usuario' className='text-gray-600 mb-1'>Email</label>
-                <input 
-                    type="email"
-                    id='usuario'  
-                    placeholder="email@exemplo.com" 
-                    className="border border-gray-300 focus:outline-none py-2"
-                    onChange={atualizarEstado}
-                    value={usuarioLogin.usuario}
-                    required
-                />
-            </div>
+            {/* Lado direito com formulário */}
+            <div className="flex justify-center items-center flex-col w-full lg:col-span-3 gap-3 rounded-lg relative">
+                {/* Botão de cadastro no topo */}
+                <div className="absolute top-4 w-2/3 flex justify-end">
+                    <BotaoCadastrarUsuario />
+                </div>
 
-            <div className="flex flex-col">
-                <label htmlFor="senha" className="text-gray-600 mb-1">Senha</label>
-                <input 
-                    type="password"
-                    id="senha"
-                    placeholder="Senha" 
-                    className="border border-gray-300 focus:outline-none py-2"
-                    onChange={atualizarEstado}
-                    value={usuarioLogin.senha}
-                    required
-                />
-            </div>
+                {/* Formulário de login */}
+                <form
+                    className="flex justify-center items-center flex-col w-2/3 gap-3 mt-24"
+                    onSubmit={login}
+                >
+                    <h6 className="poppins text-slate-900 text-2xl">Login</h6>
 
-            {/* <button
-                type="submit"
-                disabled={isLoading}
-                className={`bg-[#4ecdc4] hover:bg-[#38b9b3] text-white py-2 rounded w-full transition duration-200 ${isLoading ? "opacity-50 cursor-not-allowed" : ""}`}
-            >
-            {isLoading ? "Entrando..." : "Entrar"}    
-            </button> */}
-        
-        </form>
-    )
+                    <div className="poppins flex flex-col w-full mb-6">
+                        <label htmlFor="usuario" className="sr-only">Usuário (e-mail)</label>
+                        <input
+                            type="email"
+                            id="usuario"
+                            name="usuario"
+                            placeholder="Usuário (e-mail)"
+                            className="border-b border-gray-300 bg-transparent p-2 text-gray-700 placeholder-gray-400 focus:outline-none focus:border-gray-500"
+                            value={usuarioLogin.usuario}
+                            onChange={atualizarEstado}
+                            required
+                        />
+                    </div>
+
+                    <div className="poppins flex flex-col w-full mb-6">
+                        <label htmlFor="senha" className="sr-only">Senha</label>
+                        <input
+                            type="password"
+                            id="senha"
+                            name="senha"
+                            placeholder="Senha"
+                            className="border-b border-gray-300 bg-transparent p-2 text-gray-700 placeholder-gray-400 focus:outline-none focus:border-gray-500"
+                            value={usuarioLogin.senha}
+                            onChange={atualizarEstado}
+                            required
+                        />
+                    </div>
+
+                    {/* Botão principal de enviar o formulário */}
+                    <BotaoPrincipal label={"Entrar"} />
+                </form>
+            </div>
+        </div>
+    );
 }
 
-export default Login
+export default Login;

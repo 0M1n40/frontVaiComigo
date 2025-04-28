@@ -16,13 +16,13 @@ function CardVeiculo({ veiculo }: CardVeiculoProps) {
             <p className='p-8 text-3xl bg-slate-200 h-full'>{veiculo.modelo}</p>
             
             <div className="flex">
-                <Link to=''
+                <Link to={`/editarveiculo/${veiculo.id}`}
                     className='w-full text-slate-100 bg-indigo-400 hover:bg-indigo-800 
                         flex items-center justify-center py-2'>
                     <button>Editar</button>
                 </Link>
 
-                <Link to='' className='text-slate-100 bg-red-400 hover:bg-red-700 w-full 
+                <Link to={`/deletarveiculo/${veiculo.id}`} className='text-slate-100 bg-red-400 hover:bg-red-700 w-full 
                     flex items-center justify-center'>
                     <button>Deletar</button>
                 </Link>

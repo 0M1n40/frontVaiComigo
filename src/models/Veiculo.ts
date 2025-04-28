@@ -2,7 +2,7 @@ import { Usuario } from "./Usuario";
 import { Viagem } from "./Viagem";
 
 export interface Veiculo {
-  id: number;
+  id: number|null;
   modelo: string;
   placa: string;
   tipoVeiculo: string;
