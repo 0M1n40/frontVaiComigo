@@ -6,15 +6,20 @@ import Navbar from './components/navbar/Navbar';
 import ListaVeiculo from "./components/veiculos/listaveiculo/ListaVeiculo";
 
 import Home from "./pages/home/Home";
+import NavbarWrapper from "./components/NavbarWrapper";
 
 function App() {
+    
     return (
         <>
         <AuthProvider>
             
         <BrowserRouter>
+
+            <NavbarWrapper>
+                <Navbar/>
+            </NavbarWrapper>
     
-            <Navbar />
             <div className="min-h-[80vh]">
                 <Routes>
                 <Route path="/" element={<Login />} />
@@ -32,5 +37,3 @@ function App() {
     )
 }
     export default App
-
-
