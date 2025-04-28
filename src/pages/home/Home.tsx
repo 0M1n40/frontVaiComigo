@@ -5,6 +5,7 @@ import FuncionalidadesCarrossel from "../../components/funcionalidades/Funcional
 import Footer from "../../components/footer/Footer";
 import CarAnimation from "../../components/funcionalidades/CarAnimation";
 import BannerAnimacao from "../../components/funcionalidades/BannerAnimacao";
+import { Link } from "react-router-dom";
 
 
 function Home() {
@@ -64,10 +65,10 @@ function Home() {
             </p>
             <div className="flex items-center gap-4">
               <a href="#" className="bg-black text-white py-2 px-6 rounded-lg hover:bg-gray-800 transition">
-                Começar
+                <Link to="/veiculo">Começar</Link>
               </a>
               <a href="#" className="text-black underline hover:text-gray-700 transition">
-                Já tem uma conta? Fazer login
+                <Link to="/login"> Já tem uma conta? Fazer login</Link>
               </a>
             </div>
           </div>
