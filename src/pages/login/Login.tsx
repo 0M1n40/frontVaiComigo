@@ -4,6 +4,7 @@ import './Login.css';
 import { UsuarioLogin } from '../../models/UsuarioLogin';
 import { ChangeEvent, useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
+import BotaoPrincipal from '../../components/buttons/BotaoCadastrarEntrar';
 
 function Login() {
 
@@ -33,48 +34,48 @@ function Login() {
         handleLogin(usuarioLogin)
     }
 
-return (
-        <form onSubmit={login} className='flex flex-col w-full max-w-md gap-6'>
-            <div className="text-center">
-                <h2 className="text-slate-900 text-2xl font-bold">Login</h2>    
+    return (
+        <div className="grid grid-cols-1 lg:grid-cols-2 h-screen place-items-center font-bold">
+          <div className="fundoCadastro hidden lg:block"></div>
+    
+          <form
+            className="flex justify-center items-center flex-col w-2/3 gap-3"
+            onSubmit={login}
+          >
+            <h6 className="poppins text-slate-900 text-2xl">Login</h6>
+    
+            <div className="poppins flex flex-col w-full mb-6">
+              <label htmlFor="email" className="sr-only">Usuário (e-mail)</label>
+              <input
+                type="text"
+                id="email"
+                name="usuario"
+                placeholder="Usuário (e-mail)"
+                className="border-b border-gray-300 bg-transparent p-2 text-gray-700 placeholder-gray-400 focus:outline-none focus:border-gray-500"
+                value={usuarioLogin.usuario}
+                onChange={atualizarEstado}
+              />
             </div>
-
-            <div className="flex flex-col">
-                <label htmlFor='usuario' className='text-gray-600 mb-1'>Email</label>
-                <input 
-                    type="email"
-                    id='usuario'  
-                    placeholder="email@exemplo.com" 
-                    className="border border-gray-300 focus:outline-none py-2"
-                    onChange={atualizarEstado}
-                    value={usuarioLogin.usuario}
-                    required
-                />
+    
+            <div className="poppins flex flex-col w-full mb-6">
+              <label htmlFor="senha" className="sr-only">Senha</label>
+              <input
+                type="password"
+                id="senha"
+                name="senha"
+                placeholder="Senha"
+                className="border-b border-gray-300 bg-transparent p-2 text-gray-700 placeholder-gray-400 focus:outline-none focus:border-gray-500"
+                value={usuarioLogin.senha}
+                onChange={atualizarEstado}
+              />
             </div>
-
-            <div className="flex flex-col">
-                <label htmlFor="senha" className="text-gray-600 mb-1">Senha</label>
-                <input 
-                    type="password"
-                    id="senha"
-                    placeholder="Senha" 
-                    className="border border-gray-300 focus:outline-none py-2"
-                    onChange={atualizarEstado}
-                    value={usuarioLogin.senha}
-                    required
-                />
-            </div>
-
-            {/* <button
-                type="submit"
-                disabled={isLoading}
-                className={`bg-[#4ecdc4] hover:bg-[#38b9b3] text-white py-2 rounded w-full transition duration-200 ${isLoading ? "opacity-50 cursor-not-allowed" : ""}`}
-            >
-            {isLoading ? "Entrando..." : "Entrar"}    
-            </button> */}
-        
-        </form>
-    )
+    
+            <BotaoPrincipal
+            label={"Entrar"}
+        />
+          </form>
+        </div>
+      );
 }
 
 export default Login
