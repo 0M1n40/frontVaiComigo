@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { DNA } from "react-loader-spinner";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthContext";
+import CardVeiculo from "../cardveiculo/CardVeiculo";
 import { buscar } from "../../../service/Service";
 import { Veiculo } from "../../../models/Veiculo";
 
@@ -53,9 +54,11 @@ function ListaVeiculo() {
             <div className="flex justify-center w-full my-4">
                 <div className="container flex flex-col">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                       
-{/* {veiculo.map((veiculo) => ( <CardVeiculo key={veiculo.id} veiculo={veiculo} ))} />*/}
-                        
+
+                       {veiculo.map((veiculo) => (
+                            <CardVeiculo key={veiculo.id} veiculo={veiculo} />
+                        ))}
+
                     </div>
                 </div>
             </div>
