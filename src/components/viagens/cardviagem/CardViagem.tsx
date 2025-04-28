@@ -4,17 +4,17 @@ import { Link } from 'react-router-dom'
 import { Viagem } from '../../../models/Viagem';
 
 
-interface CardVeiculoProps {
+interface CardViagemProps {
     viagem?: Viagem;
 }
 
-function CardVeiculo({ viagem }: CardVeiculoProps) {
+function CardViagem({ viagem }: CardViagemProps) {
     return (
         <div className='border flex flex-col rounded-2xl overflow-hidden justify-between'>
             <header className='py-2 px-6 bg-indigo-800 text-white font-bold text-2xl'>
                 Veículo
             </header>
-            <p className='p-8 text-3xl bg-slate-200 h-full'>{viagem ? viagem.modelo : 'Modelo não disponível'}</p>
+            <p className='p-8 text-3xl bg-slate-200 h-full'>{viagem ? viagem.destino: 'Destino não disponível'}</p>
             
             <div className="flex">
                 <Link to=''
@@ -33,5 +33,5 @@ function CardVeiculo({ viagem }: CardVeiculoProps) {
     )
 }
 
-export default CardVeiculo
+export default CardViagem
 
