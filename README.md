@@ -1,5 +1,5 @@
 # 🚗 VaiComigo! - Caronas Inteligentes 💙
-
+![Imagem site](https://ik.imagekit.io/minayura/VaiComigo!/vaicomigo.png?updatedAt=1745843881561)
 O **VaiComigo!** é um aplicativo de caronas inteligentes que conecta motoristas e passageiros de forma prática, econômica e colaborativa. Nossa plataforma facilita a mobilidade, reduzindo custos e promovendo uma alternativa mais sustentável para o transporte diário.
 
 ---
