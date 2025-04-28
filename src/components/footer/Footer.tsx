@@ -20,7 +20,7 @@ function Footer() {
                             <a href="https://www.instagram.com/generationbrasil/" target="_blank" rel="noopener noreferrer">
                                 <InstagramLogo size={24} weight="light" />
                             </a>
-                            <a href="https://www.facebook.com/seu_usuario" target="_blank" rel="noopener noreferrer">
+                            <a href="https://www.facebook.com/generationbrasil/?locale=pt_BR" target="_blank" rel="noopener noreferrer">
                                 <FacebookLogo size={24} weight="light" />
                             </a>
                         </div>
