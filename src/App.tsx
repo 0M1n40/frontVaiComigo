@@ -3,13 +3,17 @@ import { AuthProvider } from "./contexts/AuthContext";
 import Login from "./pages/login/Login";
 import Cadastro from "./pages/cadastro/Cadastro";
 import Navbar from './components/navbar/Navbar';
+import ListaVeiculo from "./components/veiculos/listaveiculo/ListaVeiculo";
+
 import Home from "./pages/home/Home";
 
 function App() {
     return (
         <>
         <AuthProvider>
+            
         <BrowserRouter>
+    
             <Navbar />
             <div className="min-h-[80vh]">
                 <Routes>
@@ -17,6 +21,7 @@ function App() {
                 <Route path="/home" element={<Home />} />
                 <Route path="/cadastro" element={<Cadastro />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/veiculos" element={<ListaVeiculo />} />
                 </Routes>
             </div>
             
@@ -27,3 +32,5 @@ function App() {
     )
 }
     export default App
+
+
