@@ -1,33 +1,31 @@
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
+import VaiComigo from "../../utils/img/VaiComigo.png"; // Ajuste o caminho da imagem conforme necessário
 
 function Navbar() {
-    return (
-        <>
-            <div>
-                <div className='w-full flex justify-center md-flex py-6
-            			  bg-[#0D334D] text-white px-10'>
+  return (
+    <div className="w-full justify-center py-2 bg-[#0D334D] shadow-192 px-10 text-white mb-0.5">
+      <div className="container flex justify-between items-center text-gray-300 text-lg">
+        
+        {/* Esquerda - Pode adicionar um logo ou deixar vazio */}
+        <div className="flex ">
+            <Link to="/home" className="w-111 h-1/2">
+            <img src={VaiComigo} 
+            alt="Logo VaiComigo" 
+            className="w-1/3 h-1/2" />
+            </Link>
+        </div>
 
-                    <div className="container flex justify-between text-gray-300 text-lg">
+        {/* Direita - Links de navegação */}
+        <div className="flex gap-8 font-popping-light text-[#a2aeb6] ml-89 ">
+          <Link to=""  className="hover:underline">Viagens</Link>
+          <Link to="/veiculo" className="hover:underline">Veículos</Link>
+          <Link to=""  className="hover:underline">Cadastrar</Link>
+          <Link to=""  className="hover:underline border-1 w-15 text-center rounded-md ">Sair</Link>
+        </div>
 
-                    </div>
-
-                    <div className='flex gap-20 space-x-6 font-popping-light text-[#a2aeb6]'>
-                        <Link to='' className=''>Viagens</Link>
-
-                        <Link to='/veiculo' className='hover:underline'>Veículos</Link>
-
-                        <Link to='' className=''>Cadastrar</Link>
-                        
-                            <Link to='' className=''>Sair</Link>
-
-                        
-
-
-                    </div>
-                </div>
-            </div>
-        </>
-    )
+      </div>
+    </div>
+  );
 }
 
-export default Navbar
+export default Navbar;
