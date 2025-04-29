@@ -4,9 +4,8 @@ import { Veiculo } from '../../../models/Veiculo';
 import { ToastAlerta } from '../../../utils/ToastAlerta';
 import { atualizar, buscar, cadastrar } from '../../../service/Service';
 import { AuthContext } from '../../../contexts/AuthContext';
-import { RotatingLines } from 'react-loader-spinner';
-import BotaoCadastrar from '../../buttons/BotaoCadastrarVeiculoViagem';
 import BotaoCadastrarVeiculoViagem from '../../buttons/BotaoCadastrarVeiculoViagem';
+
 
 function FormVeiculo() {
     const navigate = useNavigate();

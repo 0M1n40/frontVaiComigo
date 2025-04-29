@@ -1,19 +1,20 @@
 
 import { Link } from 'react-router-dom'
-import { Veiculo } from '../../../models/Veiculo'
+// import { Veiculo } from '../../../models/Veiculo'
+import { Viagem } from '../../../models/Viagem';
 
 
-interface CardVeiculoProps{
-    veiculo: Veiculo
+interface CardVeiculoProps {
+    viagem?: Viagem;
 }
 
-function CardVeiculo({ veiculo }: CardVeiculoProps) {
+function CardVeiculo({ viagem }: CardVeiculoProps) {
     return (
         <div className='border flex flex-col rounded-2xl overflow-hidden justify-between'>
             <header className='py-2 px-6 bg-indigo-800 text-white font-bold text-2xl'>
                 Veículo
             </header>
-            <p className='p-8 text-3xl bg-slate-200 h-full'>{veiculo.modelo}</p>
+            <p className='p-8 text-3xl bg-slate-200 h-full'>{viagem ? viagem.modelo : 'Modelo não disponível'}</p>
             
             <div className="flex">
                 <Link to=''
