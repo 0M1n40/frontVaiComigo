@@ -9,7 +9,6 @@ import BotaoLogin from "../../components/buttons/BotaoLogin";
 
 function Cadastro() {
     const navigate = useNavigate()
-    const [confirmaSenha, setConfirmaSenha] = useState<string>("")
     const [isLoading, setIsLoading] = useState<boolean>(false) //deixar isLoading ai por enquanto
 
     const [usuario, setUsuario] = useState<Usuario>({

@@ -20,7 +20,7 @@ function ListaViagem() {
 
     async function fetchViagens() {
         try {
-            await buscar('/viagens', setViagens, {
+            await buscar('/viagens/all', setViagens, {
                 headers: { Authorization: token }
             })
         } catch (error: any) {
