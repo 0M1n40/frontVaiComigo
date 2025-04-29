@@ -9,7 +9,9 @@ import BotaoCadastrarVeiculoViagem from "../../../components/buttons/BotaoCadast
 
 function FormViagem() {
   const navigate = useNavigate();
-  const [viagem, setViagem] = useState<Viagem>({} as Viagem);
+  const [viagem, setViagem] = useState<Viagem>({
+
+  } as Viagem);
   const [veiculos, setVeiculos] = useState<Veiculo[]>([]);
   const { usuario, handleLogout } = useContext(AuthContext);
   const token = usuario.token;
@@ -31,7 +33,7 @@ function FormViagem() {
 
   async function buscarVeiculos() {
     try {
-      await buscar("/veiculos/usuario", setVeiculos, {
+      await buscar("/veiculos", setVeiculos, {
         headers: { Authorization: token },
       });
     } catch (error: any) {
@@ -83,7 +85,7 @@ function FormViagem() {
       }
     } else {
       try {
-        await cadastrar(`/viagens`, viagem, setViagem, {
+        await cadastrar(`/viagens/cadastrar`, viagem, setViagem, {
           headers: { Authorization: token },
         });
         ToastAlerta("Viagem cadastrada com sucesso!", "sucesso");
@@ -100,7 +102,7 @@ function FormViagem() {
   }
 
   return (
-    <div className="bg-gray-100">
+    <div className="">
       <div className="container mx-auto px-4 py-8">
       <div className="max-w-2xl mx-auto bg-white border-2 border-black rounded-lg p-8">
           <h1 className="text-2xl text-center my-4">

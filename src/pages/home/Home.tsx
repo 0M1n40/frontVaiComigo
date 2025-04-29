@@ -64,12 +64,10 @@ function Home() {
               Registre as informações do seu carro de maneira simples e rápida, garantindo que ele fique disponível para associar às viagens.
             </p>
             <div className="flex items-center gap-4">
-              <a href="#" className="bg-black text-white py-2 px-6 rounded-lg hover:bg-gray-800 transition">
-                <Link to="/veiculo">Começar</Link>
-              </a>
-              <a href="#" className="text-black underline hover:text-gray-700 transition">
-                <Link to="/login"> Já tem uma conta? Fazer login</Link>
-              </a>
+                <Link to="/veiculos/cadastrar" className="bg-black text-white py-2 px-6 rounded-lg hover:bg-gray-800 transition">Começar
+                </Link>
+          
+              
             </div>
           </div>
         </div>
@@ -88,12 +86,10 @@ function Home() {
               No VaiComigo!, cada viagem é uma oportunidade de economizar, socializar e fazer o seu caminho valer ainda mais a pena. Comece agora a compartilhar seus trajetos de forma prática e segura.
             </p>
             <div className="flex items-center gap-4">
-              <a href="#" className="bg-black text-white py-2 px-6 rounded-lg hover:bg-gray-800 transition">
+             <Link to='/viagens/cadastrar' className="bg-black text-white py-2 px-6 rounded-lg hover:bg-gray-800 transition">
                 Começar
-              </a>
-              <a href="#" className="text-black underline hover:text-gray-700 transition">
-                Confira como funciona
-              </a>
+              </Link>
+             
             </div>
           </div>
         </div>
@@ -112,9 +108,9 @@ function Home() {
             </button>
             <p className="text-sm text-gray-200">
               Não tem uma conta?{" "}
-              <a href="#" className="underline hover:text-blue-600">
+              <Link to='' className="bg-blue-200 text-blue-900 py-2 px-6 rounded-lg hover:bg-gray-800 transition">
                 Cadastre-se
-              </a>
+              </Link>
             </p>
           </div>
         </div>
