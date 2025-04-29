@@ -33,6 +33,18 @@ function App() {
                 <Route path="/home" element={<Home />} />
                 <Route path="/cadastro" element={<Cadastro />} />
                 <Route path="/login" element={<Login />} />
+
+
+
+                <Route path="/deletarveiculo/:id" element={<DeletarVeiculo />} />
+                <Route path="/deletarviagem/:id" element={<DeletarViagem />} />
+                <Route path="/veiculos" element={<ListaVeiculo />} />
+
+                <Route path="/veiculo" element={<ListaVeiculo />} />
+                <Route path="/viagens" element={<ListaViagem />} />
+                <Route path="/viagem/:id" element={<CardViagem />} />
+
+
                 <Route path="/deletarveiculo/:id" element={<DeletarVeiculo />} />
                 <Route path="/deletarviagem/:id" element={<DeletarViagem />} />
                 <Route path="/veiculos/all" element={<ListaVeiculo />} />
@@ -41,6 +53,7 @@ function App() {
                 <Route path="/viagem/:id" element={<CardViagem />} />
                 <Route path="/veiculos/:id" element={<CardVeiculo/>} />
                 <Route path="/viagens/cadastrar" element={<FormViagem />} />
+
 
                 </Routes>
             </div>

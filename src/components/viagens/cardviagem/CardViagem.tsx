@@ -90,4 +90,6 @@ function CardViagem({ viagem }: CardViagemProps) {
   );
 }
 
+
 export default CardViagem;
+
