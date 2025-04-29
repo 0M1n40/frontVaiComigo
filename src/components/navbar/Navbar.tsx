@@ -36,9 +36,13 @@ function Navbar() {
 
         {/* Links Desktop */}
         <div className="hidden md:flex space-x-8 text-[#a2aeb6] font-light">
-          <Link to="/viagens" className="hover:underline">Viagens</Link>
-          <Link to="/veiculo" className="hover:underline">Veículos</Link>
+          <Link to="/viagens/all" className="hover:underline">Viagens</Link>
+          <Link to="/veiculos/all" className="hover:underline">Veículos</Link>
           <Link to="/cadastro" className="hover:underline">Cadastrar</Link>
+          <Link to="/veiculos/cadastrar" className="hover:underline">Cadastrar Veiculos</Link>
+          <Link to="/viagens/cadastrar" className="hover:underline">Cadastrar Viagens</Link>
+
+
           <Link to="/login" className="hover:underline border border-white px-3 py-1 rounded-md">Sair</Link>
         </div>
       </div>
@@ -47,7 +51,7 @@ function Navbar() {
       {menuOpen && (
         <div className="md:hidden px-6 pb-4 flex flex-col gap-4 text-[#a2aeb6] font-light">
           <Link to="viagens" className="hover:underline" onClick={() => setMenuOpen(false)}>Viagens</Link>
-          <Link to="/veiculo" className="hover:underline" onClick={() => setMenuOpen(false)}>Veículos</Link>
+          <Link to="/veiculos/all" className="hover:underline" onClick={() => setMenuOpen(false)}>Veículos</Link>
           <Link to="/cadastro" className="hover:underline" onClick={() => setMenuOpen(false)}>Cadastrar</Link>
           <Link to="/login" className="hover:underline border border-white px-3 py-1 rounded-md text-center" onClick={() => setMenuOpen(false)}>Sair</Link>
         </div>

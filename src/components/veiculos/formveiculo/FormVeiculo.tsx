@@ -37,7 +37,7 @@ function FormVeiculo() {
     useEffect(() => {
         if (token === '') {
             ToastAlerta('Você precisa estar logado!', "info")
-            navigate('/')
+            navigate('/login')
         }
     }, [token])
 
@@ -55,7 +55,7 @@ function FormVeiculo() {
     }
 
     function retornar() {
-        navigate("/veiculos")
+        navigate("/veiculos/all")
     }
 
     async function gerarNovoVeiculo(e: ChangeEvent<HTMLFormElement>) {
@@ -64,7 +64,7 @@ function FormVeiculo() {
 
         if (id !== undefined) {
             try {
-                await atualizar(`/veiculos`, veiculo, setVeiculo, {
+                await atualizar(`/veiculos/`, veiculo, setVeiculo, {
                     headers: { 'Authorization': token }
                 })
                 ToastAlerta('O Veículo foi atualizado com sucesso!', "sucesso")
@@ -77,7 +77,7 @@ function FormVeiculo() {
             }
         } else {
             try {
-                await cadastrar(`/veiculos`, veiculo, setVeiculo, {
+                await cadastrar(`/veiculos/cadastrar`, veiculo, setVeiculo, {
                     headers: { 'Authorization': token }
                 })
                 ToastAlerta('O Veículo foi cadastrado com sucesso!', "sucesso")

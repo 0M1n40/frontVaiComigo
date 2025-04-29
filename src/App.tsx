@@ -9,6 +9,9 @@ import Home from "./pages/home/Home";
 import ListaViagem from "./components/viagens/listaviagem/ListaViagem";
 import CardViagem from "./components/viagens/cardviagem/CardViagem";
 import NavbarWrapper from "./components/NavbarWrapper";
+import FormVeiculo from "./components/veiculos/formveiculo/FormVeiculo";
+import CardVeiculo from "./components/veiculos/cardveiculo/CardVeiculo";
+import FormViagem from "./components/viagens/formviagem/FormViagem";
 
 
 function App() {
@@ -29,9 +32,19 @@ function App() {
                 <Route path="/home" element={<Home />} />
                 <Route path="/cadastro" element={<Cadastro />} />
                 <Route path="/login" element={<Login />} />
+
                 <Route path="/veiculo" element={<ListaVeiculo />} />
                 <Route path="/viagens" element={<ListaViagem />} />
                 <Route path="/viagem/:id" element={<CardViagem />} />
+
+                <Route path="/deletarveiculo/:id" element={<DeletarVeiculo />} />
+                <Route path="/deletarviagem/:id" element={<DeletarViagem />} />
+                <Route path="/veiculos/all" element={<ListaVeiculo />} />
+                <Route path="/veiculos/cadastrar" element={<FormVeiculo />} />
+                <Route path="/viagens/all" element={<ListaViagem />} />
+                <Route path="/viagem/:id" element={<CardViagem />} />
+                <Route path="/veiculos/:id" element={<CardVeiculo/>} />
+                <Route path="/viagens/cadastrar" element={<FormViagem />} />
 
                 </Routes>
             </div>
