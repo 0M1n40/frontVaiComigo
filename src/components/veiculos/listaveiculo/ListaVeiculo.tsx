@@ -18,7 +18,7 @@ function ListaVeiculo() {
 
     async function buscarVeiculo() {
         try {
-            await buscar('/veiculo', setVeiculo, {
+            await buscar('/veiculos/all', setVeiculo, {
                 headers: { Authorization: token }
             })
         } catch (error: any) {
