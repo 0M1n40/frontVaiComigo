@@ -5,7 +5,8 @@ import carAnimation from "../../utils/carroAnimacao.json"; // ajuste o caminho s
 
 const CarAnimation = () => {
   return (
-    <div className="w-200 h-64 mx-auto">
+    
+    <div className="max-w-300 h-64 mx-auto mb-58 ">
       <Lottie animationData={carAnimation} loop={true} />
     </div>
   );

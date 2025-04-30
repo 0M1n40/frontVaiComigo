@@ -5,102 +5,87 @@ import { AuthContext } from "../../../contexts/AuthContext"
 import { buscar, deletar } from "../../../service/Service"
 
 function DeletarViagem() {
+  const navigate = useNavigate()
+  const [viagem, setViagem] = useState<Viagem>({} as Viagem)
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const { usuario, handleLogout } = useContext(AuthContext)
+  const token = usuario.token
+  const { id } = useParams<{ id: string }>()
 
-    const navigate = useNavigate()
-
-    const [viagem, setViagem] = useState<Viagem>({} as Viagem)
-    const [isLoading, setIsLoading] = useState<boolean>(false) //ainda não sei se esse isLoading vai ser util aqui.
-    
-    const { usuario, handleLogout } = useContext(AuthContext)
-    const token = usuario.token
-
-    const { id } = useParams<{ id: string }>()
-
-    async function buscarPorId(id: string) {
-        try {
-            await buscar(`/viagens/${id}`, setViagem, {
-                headers: {
-                    'Authorization': token
-                }
-            })
-        } catch (error: any) {
-            if (error.toString().includes('403')) {
-                handleLogout()
-            }
-        }
+  async function buscarPorId(id: string) {
+    try {
+      await buscar(`/viagens/${id}`, setViagem, {
+        headers: { Authorization: token },
+      })
+    } catch (error: any) {
+      if (error.toString().includes("403")) {
+        handleLogout()
+      }
     }
-    // Tirei o alert para melhor visualização
-    // useEffect(() => {
-    //     if (token === '') {
-    //         //alert('Você precisa estar logado')
-    //         navigate('/')
-    //     }
-    // }, [token])
+  }
 
-    useEffect(() => {
-        if (id !== undefined) {
-            buscarPorId(id)
-        }
-    }, [id])
+  useEffect(() => {
+    if (id !== undefined) buscarPorId(id)
+  }, [id])
 
-    async function deletarViagem() {
-        setIsLoading(true)
-
-        try {
-            await deletar(`/viagens/${id}`, {
-                headers: {
-                    'Authorization': token
-                }
-            })
-
-            alert('Viagem apagada com sucesso')
-
-        } catch (error: any) {
-            if (error.toString().includes('403')) {
-                handleLogout()
-            }else {
-                alert('Erro ao deletar a viagem.')
-            }
-        }
-
-        setIsLoading(false)
-        retornar()
+  async function deletarViagem() {
+    setIsLoading(true)
+    try {
+      await deletar(`/viagens/${id}`, {
+        headers: { Authorization: token },
+      })
+      alert("Viagem apagada com sucesso")
+    } catch (error: any) {
+      if (error.toString().includes("403")) {
+        handleLogout()
+      } else {
+        alert("Erro ao deletar a viagem.")
+      }
     }
+    setIsLoading(false)
+    retornar()
+  }
 
-    function retornar() {
-        navigate("/viagens")
-    }
-    
-    return (
-        <div className='container w-1/3 mx-auto'>
-            <h1 className='text-4xl text-center my-4'>Deletar viagem</h1>
-            <p className='text-center font-semibold mb-4'>
-                Você tem certeza de que deseja apagar o viagem a seguir?</p>
-            <div className='border flex flex-col rounded-2xl overflow-hidden justify-between'>
-                <header 
-                    className='py-3 px-6 text-center text-gray-800 font-bold text-2xl'>
-                    Viagem
-                </header>
-                <div className="p-6 text-xl font-medium text-gray-800 mb-2">
-                <p>Origem: {viagem.origem}</p>
-                <p>Destino: {viagem.destino}</p>
-                <p>Vagas: {viagem.vagas}</p>
-                <p>Distancia: {viagem.distancia}</p>
-                </div>
-                <div className="flex p-4 gap-4 bg-gray-50 border-t">
-                        <button 
-                            className='text-slate-100 bg-red-400 hover:bg-red-600 w-full py-2 px-4 rounded-lg font-medium transition-colors duration-200'
-                            onClick={retornar}>
-                            Cancelar
-                        </button>
-                        <button 
-                            className='w-full text-slate-100 bg-[#4EBCB9] hover:bg-[#3EA7A5]  flex items-center justify-center rounded-lg font-medium transition-colors duration-200'
-                            onClick={deletarViagem}>
-                            <span>Confirmar</span>
-                        </button>
-                    </div>
-            </div>
+  function retornar() {
+    navigate("/viagens/all")
+  }
+
+  return (
+    <div className="flex justify-center items-center h-[80vh] ">
+      <div className="bg-white rounded-2xl shadow-lg w-full max-w-md p-6 space-y-6">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold text-[#0D334D] mb-1">Deletar Viagem</h1>
+          <p className="text-gray-700 text-sm">
+            Tem certeza que deseja apagar a viagem abaixo?
+          </p>
         </div>
-    )
+
+        <div className="bg-gray-100 p-4 rounded-xl shadow-inner text-base text-gray-800 space-y-1">
+          <p><strong>Origem:</strong> {viagem.origem}</p>
+          <p><strong>Destino:</strong> {viagem.destino}</p>
+          <p><strong>Vagas:</strong> {viagem.vagas}</p>
+          <p><strong>Distância:</strong> {viagem.distancia} km</p>
+        </div>
+
+        <div className="flex gap-3 pt-3">
+          <button
+            onClick={retornar}
+            className="w-full py-2 rounded-lg bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium transition"
+          >
+            Cancelar
+          </button>
+
+          <button
+            onClick={deletarViagem}
+            disabled={isLoading}
+            className="w-full py-2 rounded-lg bg-[#0D334D] hover:bg-blue-900  text-white font-medium transition"
+          >
+            {isLoading ? "Deletando..." : "Confirmar"}
+          </button>
+        </div>
+      </div>
+    </div>
+  )
 }
+
 export default DeletarViagem

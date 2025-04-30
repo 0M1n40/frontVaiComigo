@@ -33,7 +33,7 @@ function FormViagem() {
 
   async function buscarVeiculos() {
     try {
-      await buscar("/veiculos", setVeiculos, {
+      await buscar("/veiculos/all", setVeiculos, {
         headers: { Authorization: token },
       });
     } catch (error: any) {
@@ -98,13 +98,13 @@ function FormViagem() {
       }
     }
 
-    navigate("/viagens");
+    navigate("/viagens/all");
   }
 
   return (
     <div className="">
       <div className="container mx-auto px-4 py-8">
-      <div className="max-w-2xl mx-auto bg-white border-2 border-black rounded-lg p-8">
+      <div className="max-w-2xl mx-auto bg-gray-50 border-gray-300 border  rounded-lg p-8">
           <h1 className="text-2xl text-center my-4">
             {id === undefined ? "Cadastrar Viagem" : "Editar Viagem"}
           </h1>
