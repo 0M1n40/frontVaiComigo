@@ -12,7 +12,7 @@ function FormVeiculo() {
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
     const [veiculo, setVeiculo] = useState<Veiculo>({
-        id: 0,
+        id: null,
         modelo: '',
         placa: '',
         tipoVeiculo: ''
@@ -37,7 +37,7 @@ function FormVeiculo() {
     useEffect(() => {
         if (token === '') {
             ToastAlerta('Você precisa estar logado!', "info")
-            navigate('/')
+            navigate('/login')
         }
     }, [token])
 
@@ -55,7 +55,7 @@ function FormVeiculo() {
     }
 
     function retornar() {
-        navigate("/veiculos")
+        navigate("/veiculos/all")
     }
 
     async function gerarNovoVeiculo(e: ChangeEvent<HTMLFormElement>) {
@@ -64,7 +64,7 @@ function FormVeiculo() {
 
         if (id !== undefined) {
             try {
-                await atualizar(`/veiculos`, veiculo, setVeiculo, {
+                await atualizar(`/veiculos/${veiculo.id}`, veiculo, setVeiculo, {
                     headers: { 'Authorization': token }
                 })
                 ToastAlerta('O Veículo foi atualizado com sucesso!', "sucesso")
@@ -77,7 +77,8 @@ function FormVeiculo() {
             }
         } else {
             try {
-                await cadastrar(`/veiculos`, veiculo, setVeiculo, {
+                console.log(veiculo);
+                await cadastrar(`/veiculos/cadastrar`, veiculo, setVeiculo, {
                     headers: { 'Authorization': token }
                 })
                 ToastAlerta('O Veículo foi cadastrado com sucesso!', "sucesso")
@@ -94,15 +95,15 @@ function FormVeiculo() {
     }
 
     return (
-        <div className="flex justify-center items-center min-h-screen bg-gray-100">
-            <div className="bg-gray-50 border rounded-lg shadow-md p-8 w-full max-w-lg">
-                <h1 className="text-2xl font-semibold mb-8 text-center">
+        <div className="flex justify-center items-center h-[80vh] ">
+            <div className="bg-gray-50 border-gray-300 border rounded-lg shadow-md p-8 w-full max-w-lg">
+                <h1 className="text-2xl font-semibold mb-8 text-center text-[#0D334D]">
                     {id === undefined ? 'Cadastrar novo veículo' : 'Editar veículo'}
                 </h1>
 
                 <form className="flex flex-col gap-6" onSubmit={gerarNovoVeiculo}>
                     <div className="flex flex-col gap-1">
-                        <label htmlFor="modelo" className="text-gray-400 text-sm">Modelo do Veículo</label>
+                        <label htmlFor="modelo" className="text-gray-500 text-sm">Modelo do Veículo</label>
                         <input
                             type="text"
                             placeholder="Digite o modelo do veículo"

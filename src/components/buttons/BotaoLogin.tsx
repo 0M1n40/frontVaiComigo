@@ -1,7 +1,11 @@
+import { useNavigate } from "react-router-dom";
+
 function BotaoLogin() {
 
+    const navigate = useNavigate();
+
     function login(){
-        console.log('implementar dps')
+        navigate('/login');
     }
 
     return (
