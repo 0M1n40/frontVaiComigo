@@ -1,6 +1,9 @@
 
 import { Link } from 'react-router-dom'
 import { Viagem } from '../../../models/Viagem';
+import { useContext, useEffect, useState } from 'react';
+import { buscar } from '../../../service/Service';
+import { AuthContext } from '../../../contexts/AuthContext';
 
 
 
@@ -10,6 +13,19 @@ interface CardViagemProps {
 }
 
 function CardViagem({ viagem }: CardViagemProps) {
+  
+  const [tempo, setTempo] = useState<string>('')
+  const {usuario} = useContext(AuthContext)
+
+  async function getTempo() {
+    await buscar(`/viagens/tempo?distancia=${viagem?.distancia}`, setTempo, {
+      headers: {Authorization: usuario.token}
+    })
+  }
+
+  useEffect(() => {
+    getTempo()
+  }, [])
   
   return (
 
@@ -53,7 +69,11 @@ function CardViagem({ viagem }: CardViagemProps) {
         <span className="ml-2">▾</span>
       </div>
 
-
+      <div className="flex items-center bg-gray-100 rounded-lg px-4 py-2 w-fit">
+        <span className="text-gray-700">
+          {tempo}
+        </span>
+      </div>
       
 
       <div className="flex gap-2">

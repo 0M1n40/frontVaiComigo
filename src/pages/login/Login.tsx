@@ -72,11 +72,11 @@ function Login() {
           </h1>
         </div>
 
-        <div className="flex justify-center items-center flex-grow w-170 m-auto">
+        <div className="flex justify-center items-center flex-grow m-auto">
           <img
             src={logoPequena}
             alt="Logo do projeto VaiComigo"
-            className="h-[80%]   object-contain  mr-10"
+            className=" object-contain  max-w-3/4"
           />
         </div>
       </div>
