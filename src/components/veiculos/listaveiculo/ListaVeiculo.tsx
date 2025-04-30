@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { DNA } from "react-loader-spinner";
+import {Oval } from "react-loader-spinner";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthContext";
 import CardVeiculo from "../cardveiculo/CardVeiculo";
@@ -41,16 +41,21 @@ function ListaVeiculo() {
     
     return (
         <>
-        {veiculo.length === 0 && (
-            <DNA
-            visible={true}
-            height="200"
-            width="200"
-            ariaLabel="dna-loading"
-            wrapperStyle={{}}
-            wrapperClass="dna-wrapper mx-auto"
-        />
-        )}
+       {veiculo.length === 0 && (
+  <div className="flex items-center justify-center h-screen">
+    <Oval
+      visible={true}
+      height={120}
+      width={120}
+      color="#60A5FA" // azul claro (Tailwind: blue-400)
+      ariaLabel="loading"
+      secondaryColor="#BFDBFE" // opcional: azul ainda mais claro
+      wrapperStyle={{}}
+      wrapperClass=""
+    />
+  </div>
+)}
+
             <div className="flex justify-center w-full my-4">
                 <div className="container flex flex-col">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

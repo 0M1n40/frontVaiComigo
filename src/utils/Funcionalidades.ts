@@ -15,7 +15,7 @@ export interface Funcionalidade {
     },
     {
       titulo: "Cadastrar Viagem",
-      descricao: "Registre viagens realizadas.",
+      descricao: "Registre viagens que serão realizadas.",
       link: "/viagens/cadastrar",
       imagem: "https://ik.imagekit.io/minayura/VaiComigo!/cadastrarviagem.png?updatedAt=1745821724481",
     },

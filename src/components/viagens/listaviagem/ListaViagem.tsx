@@ -5,7 +5,7 @@ import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../contexts/AuthContext';
 import { buscar } from '../../../service/Service';
 import { ToastAlerta } from '../../../utils/ToastAlerta';
-import { DNA } from 'react-loader-spinner';
+import {  Oval } from 'react-loader-spinner';
 import CardViagem from '../cardviagem/CardViagem';
 
 
@@ -44,15 +44,20 @@ function ListaViagem() {
     return (
         <>
         {viagens.length === 0 && (
-            <DNA
-            visible={true}
-            height="200"
-            width="200"
-            ariaLabel="dna-loading"
-            wrapperStyle={{}}
-            wrapperClass="dna-wrapper mx-auto"
-        />
-        )}
+  <div className="flex items-center justify-center h-screen">
+    <Oval
+      visible={true}
+      height={120}
+      width={120}
+      color="#60A5FA" // azul claro (Tailwind: blue-400)
+      ariaLabel="loading"
+      secondaryColor="#BFDBFE" // opcional: azul ainda mais claro
+      wrapperStyle={{}}
+      wrapperClass=""
+    />
+  </div>
+)}
+
             <div className="flex justify-center w-full my-4">
                 <div className="container flex flex-col">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
